@@ -1,0 +1,287 @@
+[
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: the lady with the blue shirt.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [103, 299, 238, 477], \"label\": \"the lady with the blue shirt\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581857.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: lady with back to us.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [103, 299, 238, 477], \"label\": \"lady with back to us\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581857.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: blue shirt.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [103, 299, 238, 477], \"label\": \"blue shirt\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581857.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: woman in gray shirt facing camera on right.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [216, 261, 298, 473], \"label\": \"woman in gray shirt facing camera on right\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581857.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: woman gray right.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [216, 261, 298, 473], \"label\": \"woman gray right\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581857.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: woman greyshirt right.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [216, 261, 298, 473], \"label\": \"woman greyshirt right\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581857.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: person standing u.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [170, 91, 254, 336], \"label\": \"person standing u\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581839.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: standing.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [170, 91, 254, 336], \"label\": \"standing\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581839.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: middle standing up.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [170, 91, 254, 336], \"label\": \"middle standing up\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581839.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: lady sitting on right.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [114, 237, 320, 417], \"label\": \"lady sitting on right\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581839.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: right girl on floor.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [114, 237, 320, 417], \"label\": \"right girl on floor\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581839.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: woman sitting on right.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [114, 237, 320, 417], \"label\": \"woman sitting on right\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581839.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: woman.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [39, 95, 327, 405], \"label\": \"woman\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581789.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: left person.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [39, 95, 327, 405], \"label\": \"left person\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581789.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: woman under suitcase.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [39, 95, 327, 405], \"label\": \"woman under suitcase\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581789.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: man in jacket.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [109, 60, 578, 419], \"label\": \"man in jacket\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581789.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: man trying to help with suitcase.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [109, 60, 578, 419], \"label\": \"man trying to help with suitcase\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581789.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: man.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [109, 60, 578, 419], \"label\": \"man\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581789.jpg"
+        ]
+    },
+    {
+        "messages": [
+            {
+                "content": "<image>Please provide the bounding box coordinate of the region this sentence describes: left most toilet.",
+                "role": "user"
+            },
+            {
+                "role": "assistant",
+                "content": "```json\n[\n\t{\"bbox_2d\": [19, 149, 127, 284], \"label\": \"left most toilet\"}\n]\n```"
+            }
+        ],
+        "images": [
+            "/data/shz/dataset/coco/train2014/COCO_train2014_000000581766.jpg"
+        ]
+    }
+]

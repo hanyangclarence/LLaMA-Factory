@@ -171,6 +171,10 @@ class BaseModelArguments:
         default=False,
         metadata={"help": "Whether to trust the execution of code from datasets/models defined on the Hub or not."},
     )
+    action_config: Optional[dict] = field(
+        default=None,
+        metadata={"help": "Config to initialize the action tokenizer."},
+    )
 
     def __post_init__(self):
         if self.model_name_or_path is None:

@@ -109,6 +109,18 @@ def load_tokenizer(model_args: "ModelArguments") -> "TokenizerModule":
     if processor is not None and "Processor" not in processor.__class__.__name__:
         logger.debug("The loaded processor is not an instance of Processor. Dropping it.")
         processor = None
+    
+    # add special tokens for action tokenizer
+    if model_args.action_config is not None:
+        bins = model_args.action_config["bins"]
+        reason_start = model_args.action_config["reason_start"]
+        reason_end = model_args.action_config["reason_end"]
+        action_template = model_args.action_config["action_template"]
+        
+        tokenizer.add_tokens([reason_start, reason_end])
+        added = tokenizer.add_tokens([action_template % i for i in range(bins)])
+        if added != bins:
+            raise ValueError(f"Failed to add action tokens: {added} != {bins}.")
 
     return {"tokenizer": tokenizer, "processor": processor}
 
