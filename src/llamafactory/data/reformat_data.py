@@ -28,6 +28,7 @@ import numpy as np
 import yaml
 from omegaconf import OmegaConf
 from pathlib import Path
+import pdb
 
 from llamafactory.hparams.parser import get_train_args
 from llamafactory.model.loader import load_tokenizer
@@ -89,8 +90,11 @@ if __name__ == "__main__":
     parser.add_argument("--start_idx", type=int, default=0, help="Start index of the task list")
     parser.add_argument("--end_idx", type=int, default=18, help="End index of the task list")
     parser.add_argument("--max_videos", type=int, default=-1, help="Maximum number of videos to process")
+    parser.add_argument("--debug", action="store_true", help="Debug mode")
     args = parser.parse_args()
-
+    
+    if args.debug:
+        pdb.set_trace()
 
     task_list = task_list[args.start_idx: args.end_idx]  # start_idx is inclusive, end_idx is exclusive
     os.makedirs(output_dir, exist_ok=True)
