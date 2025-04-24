@@ -43,6 +43,8 @@ view = "front_rgb"
 
 config_path = "examples/train_full/qwen2_5_vl_full_sft.yaml"
 
+pdb.set_trace()
+
 # load model
 dict_config = yaml.safe_load(Path(config_path).absolute().read_text())
 args = OmegaConf.to_container(OmegaConf.create(dict_config))
@@ -90,11 +92,7 @@ if __name__ == "__main__":
     parser.add_argument("--start_idx", type=int, default=0, help="Start index of the task list")
     parser.add_argument("--end_idx", type=int, default=18, help="End index of the task list")
     parser.add_argument("--max_videos", type=int, default=-1, help="Maximum number of videos to process")
-    parser.add_argument("--debug", action="store_true", help="Debug mode")
     args = parser.parse_args()
-    
-    if args.debug:
-        pdb.set_trace()
 
     task_list = task_list[args.start_idx: args.end_idx]  # start_idx is inclusive, end_idx is exclusive
     os.makedirs(output_dir, exist_ok=True)
