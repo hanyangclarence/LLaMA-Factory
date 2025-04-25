@@ -173,7 +173,7 @@ if __name__ == "__main__":
                             new_img_path = pjoin(img_save_dir, img_id)
                             if not os.path.exists(new_img_path):
                                 os.symlink(pjoin(data_dir, img_obs_path), new_img_path)
-                            new_img_paths.append(img_id)
+                            new_img_paths.append(new_img_path)
                         
                         in_prompt = ""
                         for _ in range(len(new_img_paths)):
@@ -196,16 +196,15 @@ if __name__ == "__main__":
                         answer += action2str(target_action)
                         
                         metadata.append({
-                            "id": video_cnt,
-                            "image": new_img_paths[0] if len(new_img_paths) <= 1 else new_img_paths,
-                            "conversations": [
+                            "images": new_img_paths,
+                            "messages": [
                                 {
-                                    "from": "human",
-                                    "value": in_prompt
+                                    "role": "user",
+                                    "content": in_prompt
                                 },
                                 {
-                                    "from": "gpt",
-                                    "value": answer
+                                    "role": "assistant",
+                                    "content": answer
                                 }
                             ]
                         })
@@ -244,7 +243,7 @@ if __name__ == "__main__":
                             new_img_path = pjoin(img_save_dir, img_id)
                             if not os.path.exists(new_img_path):
                                 os.symlink(pjoin(data_dir, img_obs_path), new_img_path)
-                            new_img_paths.append(img_id)
+                            new_img_paths.append(new_img_path)
                             
                         in_prompt = ""
                         for _ in range(len(new_img_paths)):
@@ -268,16 +267,15 @@ if __name__ == "__main__":
                         answer += action2str(target_action)
                         
                         metadata.append({
-                            "id": video_cnt,
-                            "image": new_img_paths[0] if len(new_img_paths) <= 1 else new_img_paths,
-                            "conversations": [
+                            "images": new_img_paths,
+                            "messages": [
                                 {
-                                    "from": "human",
-                                    "value": in_prompt
+                                    "role": "user",
+                                    "content": in_prompt
                                 },
                                 {
-                                    "from": "gpt",
-                                    "value": answer
+                                    "role": "assistant",
+                                    "content": answer
                                 }
                             ]
                         })
