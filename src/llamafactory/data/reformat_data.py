@@ -51,6 +51,7 @@ pdb.set_trace()
 # load model
 dict_config = yaml.safe_load(Path(config_path).absolute().read_text())
 args = OmegaConf.to_container(OmegaConf.create(dict_config))
+args.deepspeed = None  # deepspeed is not used in this script
 model_args, _, _, _, _ = get_train_args(args)
 tokenizer_module = load_tokenizer(model_args)
 tokenizer = tokenizer_module["tokenizer"]
