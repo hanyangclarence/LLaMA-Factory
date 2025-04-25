@@ -218,7 +218,9 @@ if __name__ == "__main__":
                             continue
                         curr_obs = pickle.load(open(curr_obs_path, "rb"))
                         next_obs = pickle.load(open(next_obs_path, "rb"))
+                        
                         target_action = get_next_action(curr=curr_obs, next=next_obs)
+                        prev_action = get_prev_action(curr=curr_obs, next=next_obs)
                         
                         img_obs_paths = [pjoin(file_dir, view, "end.png")]
                         if obs_window_size >= 2:
