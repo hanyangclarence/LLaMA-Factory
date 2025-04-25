@@ -20,7 +20,7 @@ finetuning_type: full
 freeze_vision_tower: false  # choices: [true, false]
 freeze_multi_modal_projector: false  # choices: [true, false]
 # train_mm_proj_only: false  # choices: [true, false] seems not used anywhere
-deepspeed: None # examples/deepspeed/ds_z2_config.json  # choices: [ds_z0_config.json, ds_z2_config.json, ds_z3_config.json]
+deepspeed: examples/deepspeed/ds_z2_config.json  # choices: [ds_z0_config.json, ds_z2_config.json, ds_z3_config.json]
 
 ### dataset
 dataset: rlbench
@@ -44,6 +44,6 @@ learning_rate: 1.0e-6
 num_train_epochs: 2.0
 lr_scheduler_type: cosine
 warmup_ratio: 0.1
-# bf16: true
-fp16: true
+bf16: true
+# fp16: true
 ddp_timeout: 180000000
