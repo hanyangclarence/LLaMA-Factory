@@ -86,6 +86,7 @@ def action2str(action: np.ndarray) -> str:
     # verify the action string
     ids = action_tokenizer.tokenizer(action_str)["input_ids"]
     action_recon = action_tokenizer.decode_token_ids_to_actions(np.array(ids))
+    action_recon = action_tokenizer.denormalize_action(action_recon)
     print(f"Reconstruction loss: {np.abs(action_recon - action).max()}")
     
     return action_str

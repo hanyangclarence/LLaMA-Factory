@@ -60,7 +60,7 @@ class ActionTokenizer:
 
     def __call__(self, action: np.ndarray) -> Union[str, List[str]]:
         """Clip & bin actions to *the last `n_bins` tokens* of the vocabulary (e.g., tokenizer.vocab[-256:])."""
-        action = np.clip(action, a_min=float(self.min_action), a_max=float(self.max_action))
+        assert action.min() >= self.min_action and action.max() <= self.max_action, f"Action out of bounds: {action.min()} <= {action.max()}"
         discretized_action = np.digitize(action, self.bins)
         
         assert discretized_action.min() >= 1 and discretized_action.max() <= self.n_bins, f"Discretized action out of bounds: {discretized_action.min()} <= {discretized_action.max()}"
@@ -95,10 +95,17 @@ class ActionTokenizer:
     def action_to_str(self, action: np.ndarray) -> str:
         assert len(action.shape) == 1, f"Action must be a single element, got {action.shape}."
         
-        action = (action - self.pose_lower_bound) / (self.pose_upper_bound - self.pose_lower_bound) *2 - 1
+        action = (action - self.pose_lower_bound) / (self.pose_upper_bound - self.pose_lower_bound) * (self.max_action - self.min_action) + self.min_action
         assert action.min() >= -1 and action.max() <= 1, f"Action out of bounds: {action.min()} <= {action.max()}"
         
         return self(action)
+    
+    def denormalize_action(self, action: np.ndarray) -> np.ndarray:
+        assert len(action.shape) == 1, f"Action must be a single element, got {action.shape}."
+        assert action.min() >= -1 and action.max() <= 1, f"Action out of bounds: {action.min()} <= {action.max()}"
+        
+        action = (action - self.min_action) / (self.max_action - self.min_action) * (self.pose_upper_bound - self.pose_lower_bound) + self.pose_lower_bound
+        return action
 
     @property
     def vocab_size(self) -> int:
