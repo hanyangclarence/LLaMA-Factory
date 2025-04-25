@@ -23,7 +23,7 @@ freeze_multi_modal_projector: false  # choices: [true, false]
 deepspeed: None # examples/deepspeed/ds_z2_config.json  # choices: [ds_z0_config.json, ds_z2_config.json, ds_z3_config.json]
 
 ### dataset
-dataset: mllm_rec_json
+dataset: rlbench
 template: qwen2_vl
 cutoff_len: 131072
 max_samples: 10000000
