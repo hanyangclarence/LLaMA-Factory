@@ -46,8 +46,6 @@ view = "front_rgb"
 
 config_path = "examples/train_full/qwen2_5_vl_full_sft.yaml"
 
-pdb.set_trace()
-
 # load model
 dict_config = yaml.safe_load(Path(config_path).absolute().read_text())
 dict_config["deepspeed"] = None  # deepspeed is not used in this script
