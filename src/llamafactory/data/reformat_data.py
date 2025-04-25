@@ -39,7 +39,7 @@ from llamafactory.model.model_utils.action_tokenizer import ActionTokenizer
 # data_dir = "/gpfs/ebd/runs_vla_data"
 # output_dir = "/gpfs/ebd/data/runs_vla_data_lammafact"
 data_dir = "/gpfs/u/scratch/LMCG/LMCGhazh/enroot/rlbench_data/root/RACER-DataGen/racer_datagen/runs_vla_data"
-output_dir = "/gpfs/u/scratch/LMCG/LMCGhazh/enroot/rlbench_data/root/RACER-DataGen/racer_datagen/runs_vla_data_lammafact"
+output_dir = "./data"
 
 obs_window_size = 2
 view = "front_rgb"
@@ -98,9 +98,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     task_list = task_list[args.start_idx: args.end_idx]  # start_idx is inclusive, end_idx is exclusive
-    os.makedirs(output_dir, exist_ok=True)
-    img_save_dir = pjoin(output_dir, "images")
-    os.makedirs(img_save_dir, exist_ok=True)
 
     metadata = []
     video_cnt = 0
@@ -164,19 +161,9 @@ if __name__ == "__main__":
                         if any([not os.path.exists(p) for p in img_obs_paths]):
                             print(f"Image observation files not found: {img_obs_paths}")
                             continue
-                        # for each image, save it to the output directory by creating a link
-                        new_img_paths = []
-                        for img_obs_path in img_obs_paths:
-                            img_obs_path = img_obs_path.replace(data_dir, "")
-                            img_obs_path = img_obs_path[1:] if img_obs_path.startswith("/") else img_obs_path
-                            img_id = "_".join(img_obs_path.split("/"))
-                            new_img_path = pjoin(img_save_dir, img_id)
-                            if not os.path.exists(new_img_path):
-                                os.symlink(pjoin(data_dir, img_obs_path), new_img_path)
-                            new_img_paths.append(new_img_path)
                         
                         in_prompt = ""
-                        for _ in range(len(new_img_paths)):
+                        for _ in range(len(img_obs_paths)):
                             in_prompt += "<image>"
                         lang_goal = info["lang_goal"]
                         in_prompt += f"The previous action is {action2str(prev_action)}. "
@@ -196,7 +183,7 @@ if __name__ == "__main__":
                         answer += action2str(target_action)
                         
                         metadata.append({
-                            "images": new_img_paths,
+                            "images": img_obs_paths,
                             "messages": [
                                 {
                                     "role": "user",
@@ -234,19 +221,9 @@ if __name__ == "__main__":
                         if any([not os.path.exists(p) for p in img_obs_paths]):
                             print(f"Image observation files not found: {img_obs_paths}")
                             continue
-                        # for each image, save it to the output directory by creating a link
-                        new_img_paths = []
-                        for img_obs_path in img_obs_paths:
-                            img_obs_path = img_obs_path.replace(data_dir, "")
-                            img_obs_path = img_obs_path[1:] if img_obs_path.startswith("/") else img_obs_path
-                            img_id = "_".join(img_obs_path.split("/"))
-                            new_img_path = pjoin(img_save_dir, img_id)
-                            if not os.path.exists(new_img_path):
-                                os.symlink(pjoin(data_dir, img_obs_path), new_img_path)
-                            new_img_paths.append(new_img_path)
                             
                         in_prompt = ""
-                        for _ in range(len(new_img_paths)):
+                        for _ in range(len(img_obs_paths)):
                             in_prompt += "<image>"
                         lang_goal = info["lang_goal"]
                         in_prompt += f"The previous action is {action2str(prev_action)}. "
@@ -267,7 +244,7 @@ if __name__ == "__main__":
                         answer += action2str(target_action)
                         
                         metadata.append({
-                            "images": new_img_paths,
+                            "images": img_obs_paths,
                             "messages": [
                                 {
                                     "role": "user",
@@ -288,7 +265,7 @@ if __name__ == "__main__":
                     print(f"video {video_cnt} | split {split} | task {task} | episode {episode} | filename {filename}")
                         
 
-    metadata_path = pjoin(output_dir, "metadata.json")
+    metadata_path = pjoin(output_dir, "rlbench.json")
     with open(metadata_path, "w", encoding="utf-8") as f:
         json.dump(metadata, f, ensure_ascii=False, indent=4)
     print(f"Metadata saved to {metadata_path}")
