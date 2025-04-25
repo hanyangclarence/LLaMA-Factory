@@ -288,10 +288,8 @@ if __name__ == "__main__":
                     print(f"video {video_cnt} | split {split} | task {task} | episode {episode} | filename {filename}")
                         
 
-    metadata_path = pjoin(output_dir, "metadata.jsonl")
+    metadata_path = pjoin(output_dir, "metadata.json")
     with open(metadata_path, "w", encoding="utf-8") as f:
-        for item in metadata:
-            json.dump(item, f, ensure_ascii=False, indent=4)
-            f.write("\n")
+        json.dump(metadata, f, ensure_ascii=False, indent=4)
     print(f"Metadata saved to {metadata_path}")
     print(f"Total videos processed: {video_cnt}")     
