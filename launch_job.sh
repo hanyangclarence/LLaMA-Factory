@@ -3,8 +3,9 @@
 #SBATCH -o slurm_output/sft_%j.out
 #SBATCH -e slurm_output/sft_%j.err
 #SBATCH --mem=400G
-#SBATCH --nodes=1
+#SBATCH --nodes=8
 #SBATCH --ntasks-per-node=8  # total number of tasks across all nodes
+#SBATCH --gpus-per-task=1
 #SBATCH --time=06:00:00
 #SBATCH --gres=gpu:8
 
