@@ -100,7 +100,7 @@ if __name__ == "__main__":
 
     metadata = []
     video_cnt = 0
-    for split in ["val", "train"]:
+    for split in ["train"]:
         for task in os.listdir(pjoin(data_dir, split)):
             if args.max_videos > 0 and video_cnt >= args.max_videos:
                 break

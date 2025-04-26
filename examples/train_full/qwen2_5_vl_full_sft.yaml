@@ -47,3 +47,4 @@ warmup_ratio: 0.1
 # bf16: true
 fp16: true
 ddp_timeout: 180000000
+do_eval: false
