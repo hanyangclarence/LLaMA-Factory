@@ -100,7 +100,20 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
 
     @override
     def compute_loss(self, model, inputs, *args, **kwargs):
-        return super().compute_loss(model, inputs, *args, **kwargs)
+        loss, outputs = super().compute_loss(model, inputs, return_outputs=True, *args, **kwargs)
+        
+        # here we also log the loss for the gripper pose
+        with torch.no_grad():
+            gripper_logits = outputs.logits[..., -13:-5, :].float().contiguous()
+            gripper_labels = inputs["labels"][..., -12:-4].contiguous()
+            loss_fct = torch.nn.CrossEntropyLoss()
+            gripper_logits = gripper_logits.view(-1, model.config.vocab_size)
+            gripper_labels = gripper_labels.view(-1)
+            gripper_labels = gripper_labels.to(gripper_logits.device)
+            
+            gripper_loss = loss_fct(gripper_logits, gripper_labels)
+            self.log({"gripper_loss": gripper_loss.item()})  # Log the gripper loss
+        return loss
 
     @override
     def prediction_step(
