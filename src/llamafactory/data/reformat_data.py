@@ -37,7 +37,7 @@ from llamafactory.model.model_utils.action_tokenizer import ActionTokenizer
 
 
 # data_dir = "/gpfs/ebd/runs_vla_data"
-data_dir = "/gpfs/u/scratch/LMCG/LMCGhazh/enroot/rlbench_data/root/RACER-DataGen/racer_datagen/runs_vla_data"
+data_dir = "/proj/long-multi/zfchen/yanghan/data/runs_vla_data"
 output_dir = "./data"
 
 obs_window_size = 2
