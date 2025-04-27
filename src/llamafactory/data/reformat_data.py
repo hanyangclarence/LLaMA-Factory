@@ -48,6 +48,7 @@ config_path = "examples/train_full/qwen2_5_vl_full_sft.yaml"
 # load model
 dict_config = yaml.safe_load(Path(config_path).absolute().read_text())
 dict_config["deepspeed"] = None  # deepspeed is not used in this script
+dict_config["do_train"] = False
 args = OmegaConf.to_container(OmegaConf.create(dict_config))
 model_args, _, _, _, _ = get_train_args(args)
 tokenizer_module = load_tokenizer(model_args)
