@@ -17,6 +17,7 @@
 
 import json
 import os
+import sys
 from types import MethodType
 from typing import TYPE_CHECKING, Any, Optional, Union
 
@@ -113,6 +114,7 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
             
             gripper_loss = loss_fct(gripper_logits, gripper_labels)
             self.log({"gripper_loss": gripper_loss.item()})  # Log the gripper loss
+            print("gripper_loss", gripper_loss.item(), file=sys.stderr)
         return loss
 
     @override
