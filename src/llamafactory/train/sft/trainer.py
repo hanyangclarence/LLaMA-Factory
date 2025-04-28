@@ -107,7 +107,7 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
             gripper_logits = outputs.logits[..., -13:-5, :].float().contiguous()
             gripper_labels = inputs["labels"][..., -12:-4].contiguous()
             loss_fct = torch.nn.CrossEntropyLoss()
-            gripper_logits = gripper_logits.view(-1, model.config["vocab_size"])
+            gripper_logits = gripper_logits.view(-1, gripper_logits.shape[-1])
             gripper_labels = gripper_labels.view(-1)
             gripper_labels = gripper_labels.to(gripper_logits.device)
             
