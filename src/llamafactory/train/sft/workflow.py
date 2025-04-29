@@ -117,6 +117,11 @@ def run_sft(
     if training_args.predict_with_generate:
         tokenizer.padding_side = "left"  # use left-padding in generation
 
+    if training_args.do_train is False and training_args.resume_from_checkpoint is not None:
+        if not trainer.is_deepspeed_enabled and not trainer.is_fsdp_enabled:
+            logger.info_rank0_once(f"Resuming from checkpoint {training_args.resume_from_checkpoint}")
+            trainer._load_from_checkpoint(training_args.resume_from_checkpoint)
+
     # Evaluation
     if training_args.do_eval:
         metrics = trainer.evaluate(metric_key_prefix="eval", **gen_kwargs)
