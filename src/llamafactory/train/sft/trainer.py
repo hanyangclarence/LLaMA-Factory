@@ -104,12 +104,23 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
         
         # here we also log the loss for the gripper pose
         with torch.no_grad():
-            gripper_logits = outputs.logits[..., -13:-5, :].float().contiguous()
-            gripper_labels = inputs["labels"][..., -12:-4].contiguous()
-            loss_fct = torch.nn.CrossEntropyLoss()
-            gripper_logits = gripper_logits.view(-1, gripper_logits.shape[-1])
+            bs = inputs["input_ids"].shape[0]
+            gripper_labels = []
+            gripper_logits = []
+            gripper_label_start = torch.argwhere(inputs["labels"] == 151666)[:, 1] + 1
+            for b in range(bs):
+                gripper_labels.append(
+                    inputs["labels"][b, gripper_label_start[b] : gripper_label_start[b] + 8].contiguous()
+                )
+                gripper_logits.append(
+                    outputs.logits[b, gripper_label_start[b] - 1 : gripper_label_start[b] + 7, :].contiguous()
+                )
+            gripper_labels = torch.stack(gripper_labels, dim=0).contiguous()
+            gripper_logits = torch.stack(gripper_logits, dim=0).contiguous()
             gripper_labels = gripper_labels.view(-1)
+            gripper_logits = gripper_logits.view(-1, gripper_logits.shape[-1])
             gripper_labels = gripper_labels.to(gripper_logits.device)
+            loss_fct = torch.nn.CrossEntropyLoss()
             
             gripper_loss = loss_fct(gripper_logits, gripper_labels)
             self.log({"gripper_loss": gripper_loss.item()})  # Log the gripper loss
