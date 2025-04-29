@@ -129,6 +129,10 @@ class ComputeSimilarity:
 
             bleu_score = sentence_bleu([list(label)], list(pred), smoothing_function=SmoothingFunction().method3)
             self.score_dict["bleu-4"].append(round(bleu_score * 100, 4))
+            
+            pred_action_id = self.tokenizer.encode(pred)[-8:]
+            gt_action_id = self.tokenizer.encode(label)[-9:-1]
+            self.score_dict["action-accuracy"].append(np.mean(pred_action_id == gt_action_id))
 
         if compute_result:
             return self._dump()
