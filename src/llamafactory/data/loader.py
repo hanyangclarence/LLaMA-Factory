@@ -157,6 +157,7 @@ def _load_single_dataset(
 
     if data_args.max_samples is not None:  # truncate dataset
         max_samples = min(data_args.max_samples, len(dataset))
+        dataset = dataset.shuffle(seed=42)  # shuffle dataset before truncating
         dataset = dataset.select(range(max_samples))
 
     return align_dataset(dataset, dataset_attr, data_args, training_args)
