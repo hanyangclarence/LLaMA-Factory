@@ -23,7 +23,7 @@ while true; do
     # Append resume argument if checkpoint exists
     if [[ -d "$LATEST_CHECKPOINT" ]]; then
         echo "$(date): Found checkpoint: $LATEST_CHECKPOINT. Resuming."
-        CMD="${CMD} --resume_from_checkpoint ${LATEST_CHECKPOINT}"
+        CMD="${CMD} resume_from_checkpoint=${LATEST_CHECKPOINT}"
     else
         echo "$(date): No checkpoint found. Starting new training."
     fi
@@ -75,7 +75,7 @@ EOF
                 # Optional: Check job status using squeue
                 # squeue_status=$(squeue -j $JOB_ID -h -o %T 2>/dev/null)
                 # echo "$(date): Job status: ${squeue_status:-'Not Found/Completed'}. Output files not yet found. Waiting ${CHECK_INTERVAL}..."
-                echo "$(date): Output files not yet found. Waiting ${CHECK_INTERVAL}..."
+                # echo "$(date): Output files not yet found. Waiting ${CHECK_INTERVAL}..."
                 sleep ${CHECK_INTERVAL}
             fi
         done
