@@ -1,5 +1,13 @@
 # Run training
 
+Format training data:
+```
+python src/llamafactory/data/reformat_data.py
+```
+You can also change the load paths to generate validationd data 
+
+
+
 On aimos, run
 ```
 bash launch_job_auto.sh
